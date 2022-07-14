@@ -26,6 +26,7 @@ local margins = {
 }
 
 local rotationAngle = 5 
+local curRotation = 0
 local rHeld = false
 
 local enabled = false
@@ -119,11 +120,9 @@ end)
 mouse.Button1Down:Connect(function()
 	if enabled and valid then
 		-- Possibly add functionality of sending Hitbox positions to server for extra validation?
-		placeBarrierEvent:FireServer(preBarrier.CFrame)
+		placeBarrierEvent:FireServer(preBarrier.CFrame, player.UserId)
 	end
 end)
-
-
 
 tool.Equipped:Connect(function() 
 	initialize()
